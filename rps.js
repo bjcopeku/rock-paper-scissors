@@ -1,11 +1,20 @@
-<!Doctype html>
-<html>
-
-<script>
-let wins = 0;
-let losses = 0;
+let playerScore = 0;
+let computerScore = 0;
 let playerSelection;
 
+const buttons = document.querySelectorAll('button');
+
+// we use the .forEach method to iterate through each button
+buttons.forEach((button) => {
+
+    // and for each one we add a 'click' listener
+    button.addEventListener('click', (e) => {
+      alert(button.id);
+    });
+  });
+  
+
+//randomly picks computer choice
 function computerPlay() {
     let choice = Math.floor(3*Math.random());
     if (choice == 1) {
@@ -26,37 +35,38 @@ function playRound(playerSelection, computerSelection) {
         return 
     }
 
+    //checks for win condition
     switch (playerSelection) {
         case 'rock': 
             switch (computerSelection) {
                 case 'paper': 
-                    losses++;
+                    computerScore++;
                     console.log('Sorry, you lose');
                     return 
                 case 'scissors': 
-                    wins++;
-                    console.log('That\'s a win!');
+                    playerScore++;
+                    console.g('That\'s a win!');
                     return
             }
         case 'paper': 
             switch (computerSelection) {
                 case 'rock': 
-                    wins++;
+                    playerScore++;
                     console.log('That\'s a win!');
                     return
                 case 'scissors': 
-                    losses++;
+                    computerScore++;
                     console.log('Sorry, you lose');
                     return
             }
         case 'scissors': 
             switch (computerSelection) {
                 case 'paper': 
-                    wins++;
+                    playerScore++;
                     console.log('That\'s a win!');
                     return
                 case 'rock': 
-                    losses++;
+                    computerScore++;
                     console.log('Sorry, you lose');
                     return   
             }
@@ -69,24 +79,5 @@ function playRound(playerSelection, computerSelection) {
 
 
 while (playerSelection != 'quit') {
-    playerSelection = window.prompt('Rock, Paper, or Scissors?').toLowerCase();
-    let computerSelection = computerPlay()
-    console.log(playRound(playerSelection, computerSelection))
-    console.log('Score is: ' + wins + ':' + losses);
+    //round code
 }
-
-
-
-
-
-</script>
-
-
-
-
-
-
-
-
-</html>
-    
